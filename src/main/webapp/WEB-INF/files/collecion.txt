@@ -1,0 +1,18 @@
+readObject는 읽기만한고 출력은 못해서 println으로한다 이때 (chatMsg)로 변환해줘
+출력은 outputstream으로 정의하고
+objectoutputstream으로 writeobject로 객체에 저장하고 flush로 마무리
+
+버퍼에 남은 데이터를 모두 출력시키고 버퍼를 비우는 역할을 합니다.
+마지막에 남아 있을 수도 있는 데이터를 비워주기 위해 이 flush() 메소드를 사용하면 됩니다.
+
+equalsIgnoreCase:대소문자 상관없이			ex)msg.equalsIgnoreCase("x")
+trim 문자열 공백제고
+
+Collection은 object의 저장소
+set쓰는 방법도 시험에 나옴
+
+클라이언트 써야 읽는 거 말고 안써도 입력할 수 있게 readObject
+병행처리 api : thread
+ObjectOutputStream는 입이다 말은 cm
+
+bin>java com.test.sku.network .Client

@@ -1,0 +1,133 @@
+package com.test.sku.oop;
+
+import java.sql.Date;
+import java.util.Scanner;
+
+public class OOPMain {
+	static Scanner kbd = new Scanner(System.in);
+	public static void main(String[] args) {
+		/*
+		Board b = new Board(-1,"게시판 테스트","smith");               //이때 메모리 생김 = 인스턴스 생성(객체생성),1
+
+		Board b2 = new Board(2,"축하해요","james");                  //new할때마다 
+
+		Board b3 = new Board(3,"사랑해요","Romeo");
+		//b.title = "다른제목으로 수정";                                 public일때 게시판 테스트 덮어씌움
+
+		Board[] barr;
+		barr = new Board[3];
+		barr[0] = b;
+		barr[1] = b2;
+		barr[2] = b3;
+		
+        for(int i =0;i<barr.length;i++) {
+        	System.out.printf("%d\t%s\t%s %n", barr[i].getNum(), barr[i].getTitle(), barr[i].getAuthor());
+        }
+        */
+       User u =getUser();
+       String msg = Login(u) ? "로그인 성공":"로그인 실패";
+       System.out.println(msg);
+	}
+	private static User getUser() {
+		System.out.print("아이디 암호: ");
+		String input = kbd.nextLine().trim();
+		String[] data = input.split("\\s+");
+		User u =new User(data[0],data[1]);
+		return u;
+	}
+	
+	private static	boolean Login(User u) {					
+			return u.getId().equals("smith")&&u.getPwd().equals("1234");			
+		}
+
+}
+
+class Board         //Inheritance, Polymorphism, Encapsulation
+{
+	//번호, 제목, 작성자, 본문, 작성일, 히트수
+	int num;                  //Access Modifier(public, protected, private, default
+    private String title;     //title은 웹에서 접근 못하게
+    private String author;
+    private String contents;
+    private Date rDate;
+	int hits;
+	
+	//개발자가 생성자를 정의하지 않으면 컴파일러는 자동으로 기본 생성자를 선언한다.
+	public Board() {}
+	//생성된 인스턴스 멤버 변수를 초기화하는 생성자
+	//인스턴스가 생성된 직후에 자동으로 호출됨
+	public Board(int num, String title, String author) {      //기본생성자(Constructor)
+		setNum(num);                    //데이터 검증                                    //현재 오브젝트 참조
+        setTitle(title);
+        setAuthor(author);
+	}
+	public int getNum() {
+		return num;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public String getContents() {
+		return contents;
+	}
+	public Date getrDate() {                      //데이터 가져온다
+		return rDate;
+	}
+	public int getHits() {
+		return hits;
+	}
+	public void setNum(int num) {                   //음수가 못들어가게
+		if(num<=0) {
+			System.err.println("num 초기화 실패(글번호는 0보다 커야합니다)");
+			return;
+		}
+		this.num = num;
+	}
+	public void setTitle(String title) {           //데이터 두는곳 
+		this.title = title;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	public void setrDate(Date rDate) {
+		this.rDate = rDate;
+	}
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+}	
+	//키보드에서 입력된 아이디, 암호를 사용하여 User 클레스의 인스턴스를 초기화하고
+	//boolean login(User u) 메소드를 작성하여 로그인 성공여부를 확인하는 기능을 작성해보세요.
+	//Encapsulation 적용 ,기본 생성자하고 파라미터 생성자
+	
+class User 
+{                          //집합 ,우리가 만든건 데이터 집합, 아이디 암호 띄어써야함
+	private String id;
+	private String pwd;
+	
+	public User() {}
+	public User(String id,String pwd) {
+		this.id =id;
+		this.pwd = pwd;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	
+}
+

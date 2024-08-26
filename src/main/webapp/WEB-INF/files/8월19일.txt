@@ -1,0 +1,30 @@
+cb:checked :가 유사컬럼
+this 는 자바처럼 현재 오브젝트 맵 안으로 전달된 체크박스
+
+el은 받을때 param. 으로 할수 있다
+
+모델2
+: BookServlet, BookService, BookDAO, Book(둘은 안빠꿈)
+ +jsp는 view 역할만 하도록(비즈니스 로직은 모두 svc 레이어에 포함)
+ +cmd 파라미터 방식이 아닌, 요청 uri를 분석하여 서버 로직이 분기되도록 한다
+ +json-simple 라이브러리를 사용하여 json 생성/응답
+
+*uri에서 요청을 인식하는 예(http://localhost/MyProject/book/detail/3)
+String uri = request.getRequestURI();
+
+String[] token = uri.split("/");	//[,MyProject,book, detail, 3]]
+
+
+int len = toen.length;
+path = Arrays.coppyOfRange(token,3,len);	//[a,b] 구간이 34을 가져와라 글새서 [detail,3]
+
+*RESTful
+	+URI, (GET, POST, PUT, DELETE)
+	+GET :  서버 -> 클라이언트 가져오기위한 요청(서버로 전달하는 데이터량은 상대적으로 적다,CRUDE읽기)
+	+POST : 클라이언트 -> 서버로 데이터를 보내기 위한 요청(서버로 양이 많은 데이터가 전달, 상대적으로 응답이 적다,서버에 데이터 저장,생성)
+	+PUT: 업데이트
+	+DELETE:Delete
+	+Create(POST), Read(GET), UPdate(PUT), Delete(DELETE)
+
+주소 링크 주소는 get
+서비스라는 것이 controlra dao,vo, 2-3단계 자동화

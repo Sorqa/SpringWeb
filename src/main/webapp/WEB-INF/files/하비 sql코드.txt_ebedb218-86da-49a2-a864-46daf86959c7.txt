@@ -1,0 +1,9 @@
+SELECT * FROM hobbycode;
+SELECT code FROM hobbycode WHERE hobby='fishing';
+
+INSERT INTO hobby(userid,hobbycode)VALUES
+(
+    'smith',
+    (SELECT code FROM hobbycode WHERE hobby='fishing')
+);
+SELECT * FROM hobby;

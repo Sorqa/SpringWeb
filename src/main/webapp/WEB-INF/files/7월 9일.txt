@@ -1,0 +1,24 @@
+게시글 목록
+번호 제목 작성자 작성일 히트수
+1       sss   fffff      sssss     5
+2       uuu ffff       ssss      3
+
+객체지향 3대 특징<시험 보기 좋아>
+1.상속성
+2.가용성
+3.은믹성
+
+Board b2 = new Board();                  //new할때마다 Board에 있는 모든 변수를 가져올수 있음
+heap 영역에 메모리 생성
+
+생성자는 어디에나 호출할수있도록 public으로 한다
+get and seleters 읽어주기만한다 
+■
+   ■
+   □
+우측 마우스 ->Source -> Generate Getters and Setters ↑
+set메소드를 이용해 데이터 초기화
+에러를 띄우면 객체가 안나오게 할 수 있어
+private  외부에서 접근못해
+읽게만 하게 get 메소드
+SET 데이터 들어갈때 검증하겠다.

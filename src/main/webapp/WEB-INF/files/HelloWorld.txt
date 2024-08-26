@@ -1,0 +1,162 @@
+package com.test.sku;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		/*
+		// TODO Auto-generated method stub
+	  double result = 5/2;          //java는 소수점 안 나옴, 파이썬은 나옴
+	  double result1 = 5 /2.0;      //숫자 넓은 쪽으로 맞춰라 2.0은 소수점 0으로 결과가 2.5로 소수점 나옴
+	  System.out.println(result);
+      System.out.println(result1);
+      */
+		//incDecTest();
+		              
+		//print5Gugu();                 구구단 5단 제어문 안 쓰고 if,for,while 오직 증가 연산자만 9줄
+		//printGugu7();                 후증가 방식으로 구구단 7단 표시하기
+		//inputDanPrint();              키보드에서 입력된 수의 구구단이 표시되도록 해보세요
+		//notEquals();
+		//OddOrEven();                  무작위 정수 2개를 추출하여 둘다 홀수라면 "유효한 수" /" 무효한 수"
+		//logicalAnd();
+		//logicalOpTest();
+		//logicalNot();
+		//xor();
+		bitShiftOp();
+	}
+    private static void incDecTest() //Camel case, Snake case
+    {
+    	//Increment, Decrement Operators
+    	int v = 0;
+    	v++; //증가 연산자 
+    	System.out.println(v);     //1
+    	++v;
+    	System.out.println(v);     //2
+    	System.out.println(v++);   //2, 후 증가 연산자 Post-Increment Operator
+    	System.out.println(v);     //3
+    	System.out.println(++v);   //4, 전 증가 연산자 Pre-Increment Operator
+    	System.out.println(v);     //4
+    }
+    
+   
+    
+    private static void print5Gugu() {
+    	int dan = 5;
+    	int i =0;
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    	System.out.printf("%d * %d = %d %n", dan, ++i, dan*i);
+    }
+    
+    private static void printGugu7() {
+    	int dan =7;
+    	int i = 1;
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    	System.out.printf("%d * %d = %d %n", dan, i, dan*i++);
+    }
+    
+    private static void inputDanPrint(){
+    	Scanner kbd = new Scanner(System.in);
+        System.out.print("몇 단: ");
+    
+        int dan = kbd.nextInt();   
+        String guguForm = "%d * %d = %d %n";
+        
+        int i = 1;      //0이면 전위
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+        System.out.printf(guguForm, dan, i, dan*i++);
+
+    	kbd.close();
+    }
+    
+    private static void notEquals() {
+    	int a =3;
+    	int b =5;
+    	//비교, 논리 연산자들은 항상 boolean값을 리턴한다
+    	System.out.println(a !=b);    //true
+    	System.out.println(a ==b);    //false
+    }
+    //키보드 수를 입력 받아서 홀수인지 짝수인지 확인하여 화면에 표시하기
+    //출력 예시) "3은 홀수입니다"(자료형, 산술, 비교, 3항연산자)
+    private static void OddOrEven() {
+    	Scanner kbd = new Scanner(System.in);
+        System.out.print("정수 입력: ");
+    
+        int n = kbd.nextInt(); 
+        String msg = String.format("%d는(은) %s입니다", n, n%2 == 0 ? "짝수": "홀수");
+        System.out.println(msg);
+    }
+    
+    private static void logicalAnd() {
+    	boolean result = true && true;   //true
+    	result = true || true;           //true
+    	result = true || false;          //true,Short Circuit Logical OR Operator 단축 온니 or 연산자
+    	result = false|| true;           //true
+    	result = false && true;          //false 단축연산자, 비단축 논리 연산자도 필요하다 거의 안씀
+    	result = false & true;           //비단축 논리 AND 연산자
+    	result = true | false;           //비단축 논리 OR 연산자
+    }
+    
+    //무작위 정수 2개를 추출하여 둘다 홀수라면 "유효한 수" /" 무효한 수"
+    private static void logicalOpTest() {
+    	Random rd = new Random();
+    	int a = rd.nextInt(20);
+    	int b = rd.nextInt(20);
+    	
+    	String result = a%2 == 1 && b%2 == 1 ? "유효한 수": "무효한 수";
+    	//String msg = String.format("%d와 %d는 %s입니다", a,b, result ? "유효한 수": "무효한 수");
+    	String msg = String.format("%d와 %d는 %s입니다",a,b,result);
+    	System.out.println(msg);
+    }
+    
+    //둘다 짝수가 아니라면, 논리 부정연산자(!), !true ->false
+    //키보드에서 아이디,암호를 입력 받아서 아이디(smith), 암호(1234)가 맞으면 ->equals
+    //"로그인 성공/로그인 실패"를 출력한는 기능
+    private static void logicalNot() {
+    	Scanner kbd = new Scanner(System.in);
+    	System.out.print("id를 입력하세요 : ");
+    	String id = kbd.next();
+    	System.out.print("password를 입력하세요 : ");
+    	String pw = kbd.next();
+    	
+    	String result = !(id.equals("smith") && pw.equals("1234")) ? "로그인 실패" : "로그인 성공";
+    	System.out.println(result);
+    	
+    }
+    
+    private static void xor() {
+    	boolean result = true || true;
+    	result = true ^ true;       //false
+    	System.out.println(result);
+    }
+    
+    private static void bitShiftOp() {
+    	int a =1;
+    	int b = a <<1;          //a에 들어있는 bit를 32개의 비트를 한 칸 씩 옮김 그럼 2진수의 자리가 바뀜
+        System.out.println(b);  //2
+        
+        b = a <<2;
+        System.out.println(b);  //4
+    }
+}

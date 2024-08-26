@@ -1,0 +1,261 @@
+package com.test.sku;
+
+import java.util.Calendar;
+import java.util.Random;
+import java.util.Scanner;
+
+public class ControlStatement {
+
+	/* 반복문, 조건문
+	 * 반복문(while, do~while, for)
+	 * 조건문(if,  if~else, if~else if~else, switch)
+	 */
+	public static void main(String[] args) {
+	  /*boolean go = true;
+	  int i = 0;
+      while(go) {
+    	  //조건이 true일 경우에만 반복 실행되는 블럭
+    	  i++;
+    	  go = i<10 ? true:false;
+    	  System.out.print(i+"");
+    	  
+      }*/
+		//showGugu();
+		//showSome();
+		//showSome1();
+		//showDiscount();
+		//getEvent5();
+		//dateTest();
+		//variableInit();
+		//login();
+	}
+//무작위로 추출된 정수(2~9)를 사용하여 해당 수의 구구단 출력하기
+	private static void showGugu() {
+		Random rd = new Random();
+		int a = rd.nextInt(7)+2;
+		int  i = 0;
+		while(i < 9) {
+			System.out.printf("%d * %d = %d %n", a, ++i, a*i);
+		}
+		//강사님 코드
+		int dan = new Random().nextInt(8)+2;
+		boolean go = true;
+		int g = 0;
+		while(go)
+		{ 
+			//게시판 이랑 구구단이랑 똑같데 
+			System.out.printf("%d * %d = %d %n", dan, ++g, dan*g);
+			go = g==9 ? false:true;
+		}
+	}
+	
+	//무작위 숫자를 추출하여 그 수부터 10까지 합산하여 아래처럼 표시해보세요
+	//출력 예시)3 ~10까지 합산 =?
+	private static void showSome() {
+		int i = new Random().nextInt(10);
+		int start = i;
+		int sum = 0;
+		//boolean은 항상 ture,false 리턴
+		while(i <= 10) {
+			sum += i++;   
+		}
+		System.out.printf("%d ~ 10가지 합산 = %d %n",start, sum);
+		
+	}
+	private static void showSome1() {
+		int i = new Random().nextInt(10);
+		int start = i;
+		int sum = 0;
+		//boolean은 항상 ture,false 리턴
+		while(i++ <= 10) {                       
+			sum += i -1;          //시작 값을 놓쳤기 때문
+			
+		}
+		System.out.printf("%d ~ 10가지 합산 = %d %n",start, sum);
+		
+	}
+	
+	//while 문장을 사용하여 1~5~1을 출력하는 기능을 작성해보세요  
+	//출력예시)  1 2 3 4 5 4 3 2 1 
+	private static void showDiscount() {
+		int i =1;
+		int delta = 1;
+		int cnt = 0;
+		while( i >0 ) {
+			System.out.printf("%d ", i);
+			cnt++;
+			delta = cnt>=5 ? -1: 1;
+			i += delta;
+			
+		}
+		
+	}
+	
+	//while 문장을 사용하여 무작위 수 중에서 짝수가 5개 출력하기
+	private static void getEvent5() {
+		Random rd = new Random();
+		int cnt = 0;
+		
+		while(cnt <5) {
+			int rn = rd.nextInt(20)+1;
+			String s =rn%2==0 ? rn+"":"";     //숫자 옆에 공백은 문자열 왼쪽이 문자열이니 반대로 저절로 문자열로
+			System.out.printf(s);
+			cnt += !s.equals("") ? 1 :0;
+		}
+	}
+	
+	//if문장의 예
+	private static void ifTest() {
+		int i = 0;
+		if(i==1)      //조건:boolean 리터널 혹은 표현식
+		{
+			System.out.println("참인 경우");
+		}
+		else if(i==2)
+		{
+			
+		}else
+		{
+		System.out.println("거짓인 경우");
+		}
+		System.out.println("메소드 종료");
+	}
+	
+	private static void dateTest() {
+		Calendar cal = Calendar.getInstance();
+		int y =cal.get(cal.YEAR);
+		int M =cal.get(cal.MONTH)+1;
+		int d =cal.get(cal.DAY_OF_MONTH);
+		int wd =cal.get(cal.DAY_OF_WEEK);
+		int h =cal.get(cal.HOUR);
+		int m =cal.get(cal.MINUTE);
+		int s =cal.get(cal.SECOND);
+		
+		String sWeekDay = null;            //참조변수는 null로 초기화 가능
+		if(wd==1)   sWeekDay = "일";
+		else if(wd == 6) sWeekDay = "금";
+		else if(wd == 2) sWeekDay = "월";	
+		else if(wd == 3) sWeekDay = "화";
+		else if(wd == 4) sWeekDay = "수";
+		else if(wd == 5) sWeekDay = "목";
+		else if(wd == 6) sWeekDay = "토";
+		System.out.printf("%d년-%d월-%d일 %s요일 %d:%d:%d%n", y,M,d,sWeekDay, h,m,s);
+	}
+	
+	private static void variableInit()
+	{
+		int v =0;
+		String s = null;            
+		s = "";
+		String str;                    //참조변수니까 문자열의 주소가 들어간다
+		boolean result = str.equals("");
+		System.out.println(result);
+	}
+	private static void login() {
+		//키보드에서 id,password를 입력하고 smith, 1234인지 확인
+		//이용자 로그인에 실패하면 3회까지 기회를 주고 3회 넘어가면 10분후에 다시 시도
+		//하라고 메시지 출력 후 프로그램 종료
+		//3회 안에 로그인에 성공하면 "로그인 성공" 출력 후 프로그램 종료
+		/*int cnt =0;
+		while(true)
+		{
+			cnt++;
+			if(cnt==3)break;
+		}*/
+		int cnt =0;
+		Scanner kbd = new Scanner(System.in);
+		System.out.print("id를 입력하세요: ");
+		String id = kbd.next();
+		System.out.print("pw를 입력하세요 : ");
+		String pw =kbd.next();
+		
+		boolean result = !(id.equals("smith") && pw.equals("1234")) ? true : false;
+		while(result) {
+			System.out.printf("id를 입력하세요: ",id);
+			
+			System.out.printf("pw를 입력하세요 : ",pw);
+			if(result == false) {
+				System.out.print("로그인 성공");
+				break;
+			}
+			cnt++;
+			if(cnt ==3)break;
+			
+		}
+		System.out.print("10분후에 다시 시도");
+	}
+	private static void login1() {
+	int cnt =0;
+	Scanner kbd = new Scanner(System.in);
+	boolean go =true;
+	while(go) {
+	
+	System.out.print("id를 입력하세요: ");
+	String id = kbd.next();
+	System.out.print("pw를 입력하세요 : ");
+	String pw =kbd.next();
+	
+	if(id.equals("smith") && pw.equals("1234"))
+	{
+		System.out.print("로그인 성공");
+		go=false;
+	}
+	if(++cnt==3)
+	{
+		System.out.print("10분후에 다시 시도");
+		break;
+	}
+		
+	}
+}
+       private static void switchTest() {
+    	   int n =2;
+    	   switch(n)
+    	   {
+    	   case 1:
+    		   //
+    		   break;                      //반복문 말고 switch에도 쓰일 수 있음
+    	   case 2:
+    		   //
+    		   break;
+    	   case 3:
+    		   //
+    		   break;
+    	   default:
+    		   //
+    		   break;
+    	   }
+    }
+       private static void dateTest1() {
+   	Calendar cal = Calendar.getInstance();
+	int y =cal.get(cal.YEAR);
+	int M =cal.get(cal.MONTH)+1;
+	int d =cal.get(cal.DAY_OF_MONTH);
+	int wd =cal.get(cal.DAY_OF_WEEK);
+	int h =cal.get(cal.HOUR);
+	int m =cal.get(cal.MINUTE);
+	int s =cal.get(cal.SECOND);
+	
+	String sWeekDay = null;            //참조변수는 null로 초기화 가능
+	switch(wd)
+	{
+	case 1:   sWeekDay = "일";break;
+	case 6: sWeekDay = "금"; break;
+	case 2: sWeekDay = "월";	break;
+	case 3: sWeekDay = "화";break;
+	case 4: sWeekDay = "수";break;
+	case 5: sWeekDay = "목";break;
+	case 7: sWeekDay = "토";break;}
+	System.out.printf("%d년-%d월-%d일 %s요일 %d:%d:%d%n", y,M,d,sWeekDay, h,m,s);
+}
+       
+       private static void forLoopTest()
+       {
+    	   for( ; ;)  //가운데 가 트루면 {} 안 실행 {}은 세번째 ; 뒤에 오고 그것은 다시 두번째로가 확인
+    		   //1번 섹터는 루프에 참여하지 않는다 1회만 실행된느 logic 객체,변수 생성 2번 섹터는 b 3번은 i++같은 
+    	   {
+    		   //
+    	   }
+       }
+}
+
